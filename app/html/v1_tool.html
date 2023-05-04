@@ -9,20 +9,22 @@
 
     <form action="/v1/html/tool" method="post">
         <h3>md5加密输入：<input type="text" name="md5_list" value={{ view_obj.s }}> <input type="submit" value="提交"></h3>
-        <h3>md5加密结果</h3>
-        <div>
-        <table border = "1px">
-            <tr style="background: #ee0000">
-                <th>加密前</th>
-                <th>加密后</th>
-            </tr>
-            {%  for row in view_obj.md5_list %}
-            <tr>
-                <th>{{ row[0] }}</th>
-                <th>{{ row[1] }}</th>
-            </tr>
-            {% endfor %}
-        </table>
+        {% if view_obj.md5_list | length > 0 %}
+            <h3>md5加密后的结果</h3>
+            <div>
+            <table border = "1px">
+                <tr style="background: #ee0000">
+                    <th>加密前</th>
+                    <th>加密后</th>
+                </tr>
+                {%  for row in view_obj.md5_list %}
+                <tr>
+                    <th>{{ row[0] }}</th>
+                    <th>{{ row[1] }}</th>
+                </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
     </div>
     </form>
     
